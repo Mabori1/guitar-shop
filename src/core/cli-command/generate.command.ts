@@ -30,8 +30,8 @@ const DEFAULT_ADMIN_USER = {
   email: 'admin@admin.com',
 };
 
-export default class ImportCommand implements CliCommandInterface {
-  public readonly name = '--import';
+export default class GenerateCommand implements CliCommandInterface {
+  public readonly name = '--generate';
   private userService!: UserServiceInterface;
   private productService!: ProductServiceInterface;
   private databaseService!: DatabaseClientInterface;
