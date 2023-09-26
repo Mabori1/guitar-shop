@@ -19,7 +19,6 @@ export default class ProductGenerator implements ProductGeneratorInterface {
   constructor(private readonly mockData: MockData) {}
 
   public generate(): string {
-    const id = nanoid(5);
     const title = getRandomItem<string>(this.mockData.titles);
     const description = getRandomItem<string>(this.mockData.descriptions);
     const photo = getRandomItem<string>(this.mockData.photos);
@@ -28,7 +27,7 @@ export default class ProductGenerator implements ProductGeneratorInterface {
       GuitarType.Acoustic,
       GuitarType.Ukulele,
     ]);
-    const article = nanoid(4);
+    const article = nanoid(6);
     const stringCount = getRandomItem([
       StringsCount.four,
       StringsCount.six,
@@ -41,7 +40,6 @@ export default class ProductGenerator implements ProductGeneratorInterface {
       .toISOString();
 
     return [
-      id,
       title,
       description,
       addedDate,
