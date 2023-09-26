@@ -3,14 +3,14 @@ services:
   db:
     image: mongo:4.2
     restart: always
-    container_name: buy-and-sell_mongodb
+    container_name: guitar-shop_mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: test
     ports:
       - 27017:27017
     volumes:
-      - buy-and-sell_data:/data/db
+      - guitar-shop_data:/data/db
 
   db_ui:
     image: mongo-express:latest
