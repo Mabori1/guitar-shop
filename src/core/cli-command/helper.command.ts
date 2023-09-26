@@ -11,8 +11,9 @@ export default class HelpCommand implements CliCommandInterface {
         Команды:
             --version:                   # выводит номер версии
             --help:                      # печатает этот текст
-            --import <path>:             # импортирует данные из TSV
-            --generate <n> <path> <url>  # генерирует произвольное количество тестовых данных
+            --generate <n> <connection string>  # генерирует и заполняет БД произвольное количество
+                                                  тестовых данных
+        Пример: npm run ts ./src/main.cli.ts -- --generate 100 admin test localhost 27017 guitar-shop secret
         `);
   }
 }

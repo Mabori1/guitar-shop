@@ -16,21 +16,28 @@ import { ProductServiceInterface } from '../../modules/product/product-service.i
 import { ProductModel } from '../../modules/product/product.entity.js';
 import { ProductService } from '../../modules/product/product-service.js';
 import { Product } from '../../types/product.type.js';
+import ProductGenerator from '../../modules/product-generator/product-generator.js';
+import got from 'got';
+import { MockData } from '../../types/mock-data.type.js';
+import { DECIMAL_SYSTEM } from '../../constant.js';
+import TSVFileWriter from '../file-writer/tsv-file-writer.js';
 
-const DEFAULT_DB_PORT = '27017';
+const DEFAULT_MOCK_DATA_FILEPATH = 'http://localhost:3123/api';
+const DEFAULT_CSV_FILEPATH = './mocks/temp_products.csv';
 const DEFAULT_ADMIN_USER = {
   name: 'admin',
   password: 'admin',
   email: 'admin@admin.com',
 };
 
-export default class ImportCommand implements CliCommandInterface {
-  public readonly name = '--import';
+export default class GenerateCommand implements CliCommandInterface {
+  public readonly name = '--generate';
   private userService!: UserServiceInterface;
   private productService!: ProductServiceInterface;
   private databaseService!: DatabaseClientInterface;
   private logger: LoggerInterface;
   private salt!: string;
+  private countProduct!: number;
 
   constructor() {
     this.onLine = this.onLine.bind(this);
@@ -62,19 +69,32 @@ export default class ImportCommand implements CliCommandInterface {
   }
 
   public async execute(
-    filename: string,
+    countProduct: string,
     login: string,
     password: string,
     host: string,
+    port: string,
     dbname: string,
     salt: string
   ): Promise<void> {
-    const uri = getMongoURI(login, password, host, DEFAULT_DB_PORT, dbname);
+    const uri = getMongoURI(login, password, host, port, dbname);
     this.salt = salt;
+    this.countProduct = Number.parseInt(countProduct, DECIMAL_SYSTEM);
+
+    const initialData: MockData = await got
+      .get(DEFAULT_MOCK_DATA_FILEPATH)
+      .json();
+
+    const productGeneratorString = new ProductGenerator(initialData);
+    const tsvFileWriter = new TSVFileWriter(DEFAULT_CSV_FILEPATH);
+
+    for (let i = 0; i < this.countProduct; i++) {
+      await tsvFileWriter.write(productGeneratorString.generate());
+    }
 
     await this.databaseService.connect(uri);
 
-    const fileReader = new TSVFileReader(filename.trim());
+    const fileReader = new TSVFileReader(DEFAULT_CSV_FILEPATH);
 
     fileReader.on('line', this.onLine);
     fileReader.on('end', this.onComplete);
@@ -83,6 +103,17 @@ export default class ImportCommand implements CliCommandInterface {
       await fileReader.read();
     } catch (err) {
       console.log(`Can't read the file: ${getErrorMessage(err)}`);
+      console.log(`
+        Программа для подготовки данных для REST API сервера.
+        Пример:
+            main.js --<command> [--arguments]
+        Команды:
+            --version:                   # выводит номер версии
+            --help:                      # печатает этот текст
+            --generate <n> <connection string>  # генерирует и заполняет БД произвольное количество
+                                                  тестовых данных
+        Пример: npm run ts ./src/main.cli.ts -- --generate 100 admin test localhost 27017 guitar-shop secret
+        `);
     }
   }
 }
