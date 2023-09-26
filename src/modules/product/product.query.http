@@ -1,0 +1,75 @@
+## Получить список продуктов
+GET http://localhost:3010/products/?limit=5 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MjIyOTYxLCJleHAiOjE2ODczOTU3NjF9.O26mVrLaIltA5BrsHz_SKZrZRxdXQ_5AQvOSyeNLyTM
+
+
+###
+
+## Получить список продуктов с фильтром
+GET http://localhost:3010/products/?stringCount=6 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MjIyOTYxLCJleHAiOjE2ODczOTU3NjF9.O26mVrLaIltA5BrsHz_SKZrZRxdXQ_5AQvOSyeNLyTM
+
+
+###
+
+## Добавить новый продукт
+POST http://localhost:3010/products HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Новая электро гитара",
+  "description": "Новинка этого года!",
+  "guitarType": "электро",
+  "stringCount": 4,
+  "article": "jsldfd",
+  "price": 23300
+}
+
+###
+
+## Получить информацию о продукте
+GET http://localhost:3010/products/648d99a2cb1c31855a38e44f HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MDA2MTE1LCJleHAiOjE2ODcxNzg5MTV9.QwzM3tXzgBnzmeUX-bK63NwXLi4EQhOfkkGGRFRj-kw
+
+
+###
+
+## Удалить продукт
+DELETE http://localhost:3010/products/648d91ca1dec9e8a5b3a0fb3 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MDA2MTE1LCJleHAiOjE2ODcxNzg5MTV9.QwzM3tXzgBnzmeUX-bK63NwXLi4EQhOfkkGGRFRj-kw
+
+###
+
+## Изменить данные продукта
+PATCH http://localhost:3010/products/648d91ca1dec9e8a5b3a0fb3 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MDA2MTE1LCJleHAiOjE2ODcxNzg5MTV9.QwzM3tXzgBnzmeUX-bK63NwXLi4EQhOfkkGGRFRj-kw
+
+{
+  "title": "Другая электро гитара",
+  "description": "Новинка прошлого года!",
+  "photo": "image.png",
+  "guitarType": "электро",
+  "stringCount": 6,
+  "price": 44000
+}
+
+###
+
+## Отправка фотографии товара
+
+POST http://localhost:3010/products/648d99a2cb1c31855a38e44f/photo HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="photo"; filename="test-product.png"
+Content-Type: image/png
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MDA2MTE1LCJleHAiOjE2ODcxNzg5MTV9.QwzM3tXzgBnzmeUX-bK63NwXLi4EQhOfkkGGRFRj-kw
+
+
+< /Users/makee/p1.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

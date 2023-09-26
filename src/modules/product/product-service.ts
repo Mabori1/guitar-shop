@@ -41,6 +41,12 @@ export class ProductService implements ProductServiceInterface {
     return this.productModel.findOne({ _id: id }).exec();
   }
 
+  public async findByTitle(
+    title: string
+  ): Promise<types.DocumentType<ProductEntity> | null> {
+    return this.productModel.findOne({ title }).exec();
+  }
+
   public async find(
     query: ProductQuery
   ): Promise<types.DocumentType<ProductEntity>[]> {

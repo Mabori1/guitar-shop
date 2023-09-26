@@ -1,13 +1,9 @@
 import { IsEmail, IsString, Length } from 'class-validator';
 import { USER_VALIDATION_DATA } from '../user.constant';
 
-const { NAME, EMAIL, PASSWORD } = USER_VALIDATION_DATA;
+const { EMAIL, PASSWORD } = USER_VALIDATION_DATA;
 
-export class CreateUserDto {
-  @IsString({ message: NAME.MessageRequired })
-  @Length(NAME.Min, NAME.Max, { message: NAME.MessageValid })
-  public name!: string;
-
+export class LoginUserDto {
   @IsEmail({}, { message: EMAIL.MessageValid })
   public email!: string;
 

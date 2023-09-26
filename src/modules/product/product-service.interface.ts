@@ -9,6 +9,7 @@ export interface ProductServiceInterface extends DocumentExistsInterface {
   create(dto: CreateProductDto): Promise<DocumentType<ProductEntity>>;
   find(query: ProductQuery): Promise<types.DocumentType<ProductEntity>[]>;
   findById(id: string): Promise<types.DocumentType<ProductEntity> | null>;
+  findByTitle(title: string): Promise<types.DocumentType<ProductEntity> | null>;
   updateById(
     productId: string,
     dto: UpdateProductDto

@@ -1,0 +1,28 @@
+## Регистрация пользователя
+POST http://localhost:3010/users/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Алексей",
+  "email": "mabori@mail.ru",
+  "password": "38392"
+}
+
+###
+
+## Авторизация пользователя
+POST http://localhost:3010/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "mabori@mail.ru",
+  "password": "38392"
+}
+
+###
+
+## Проверка токена пользователя
+GET http://localhost:3010/users/login HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MjIzNTAwLCJleHAiOjE2ODczOTYzMDB9.IMCm-aIXueLCgLnlt7UjWfVlwkUlh4nL7ztfav6AwW8
+
+###
