@@ -28,7 +28,7 @@ export class ProductService implements ProductServiceInterface {
   ): Promise<DocumentType<ProductEntity>> {
     const result = await this.productModel.create({
       ...dto,
-      photo: DEFAULT_STATIC_IMAGES[0],
+      photo: DEFAULT_STATIC_IMAGES,
     });
     this.logger.info(`New product created: ${dto.title}`);
 

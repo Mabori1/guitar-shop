@@ -55,6 +55,7 @@ export abstract class Controller implements ControllerInterface {
   }
 
   public send<T>(res: Response, statusCode: number, data: T): void {
+    this.addStaticPath(data as UnknownRecord);
     res.type('application/json').status(statusCode).json(data);
   }
 

@@ -98,19 +98,14 @@ export default class UserController extends Controller {
       }
     );
 
-    this.ok(
-      res,
-      fillDTO(LoggedUserRdo, {
-        email: user.email,
-        token,
-      })
-    );
+    this.ok(res, {
+      ...fillDTO(LoggedUserRdo, user),
+      token,
+    });
   }
 
-  public async checkAuthenticate({ user: { email } }: Request, res: Response) {
-    const foundedUser = await this.userService.findByEmail(email);
-
-    if (!foundedUser) {
+  public async checkAuthenticate(req: Request, res: Response) {
+    if (!req.user) {
       throw new HttpError(
         StatusCodes.UNAUTHORIZED,
         'Unauthorized',
@@ -118,6 +113,7 @@ export default class UserController extends Controller {
       );
     }
 
+    const foundedUser = await this.userService.findByEmail(req.user.email);
     this.ok(res, fillDTO(LoggedUserRdo, foundedUser));
   }
 }

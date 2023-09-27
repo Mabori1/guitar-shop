@@ -8,6 +8,8 @@ export const AppComponent = {
   ProductServiceInterface: Symbol.for('ProductServiceInterface'),
   ProductModel: Symbol.for('ProductModel'),
   ProductController: Symbol.for('ProductController'),
-  ExceptionFilterInterface: Symbol.for('ExceptionFilterInterface'),
   UserController: Symbol.for('UserController'),
+  HttpErrorExceptionFilter: Symbol.for('HttpErrorExceptionFilter'),
+  BaseExceptionFilter: Symbol.for('BaseExceptionFilter'),
+  ValidationExceptionFilter: Symbol.for('ValidationExceptionFilter'),
 } as const;

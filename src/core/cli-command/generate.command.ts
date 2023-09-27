@@ -8,7 +8,6 @@ import {
 import { UserServiceInterface } from '../../modules/user/user-service.interface.js';
 import { LoggerInterface } from '../logger/logger.interface.js';
 import ConsoleLoggerService from '../logger/console.service.js';
-import UserService from '../../modules/user/user.service.js';
 import MongoClientService from '../database-client/mongo-client.service.js';
 import { UserModel } from '../../modules/user/user.entity.js';
 import { DatabaseClientInterface } from '../database-client/database-client.interface.js';
@@ -21,6 +20,7 @@ import got from 'got';
 import { MockData } from '../../types/mock-data.type.js';
 import { DECIMAL_SYSTEM } from '../../constant.js';
 import TSVFileWriter from '../file-writer/tsv-file-writer.js';
+import { UserService } from '../../modules/user/user.service.js';
 
 const DEFAULT_MOCK_DATA_FILEPATH = 'http://localhost:3123/api';
 const DEFAULT_CSV_FILEPATH = './mocks/temp_products.csv';
