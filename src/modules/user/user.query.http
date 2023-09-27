@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "name": "Алексей",
   "email": "mabori@mail.ru",
-  "password": "38392"
+  "password": "381392"
 }
 
 ###
@@ -16,13 +16,13 @@ Content-Type: application/json
 
 {
   "email": "mabori@mail.ru",
-  "password": "38392"
+  "password": "381392"
 }
 
 ###
 
 ## Проверка токена пользователя
 GET http://localhost:3010/users/login HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MjIzNTAwLCJleHAiOjE2ODczOTYzMDB9.IMCm-aIXueLCgLnlt7UjWfVlwkUlh4nL7ztfav6AwW8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hYm9yaUBtYWlsLnJ1IiwiaWQiOiI2NTE0M2FlNDcyZjgyZjc5MjZmNTQ5Y2YiLCJpYXQiOjE2OTU4MjQ2NjIsImV4cCI6MTY5NTk5NzQ2Mn0.MEbRP-FftZRvJGYsKfJdxWgFOXUztXOYAyKHwaihpZc
 
 ###

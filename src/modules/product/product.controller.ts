@@ -21,6 +21,13 @@ import { ConfigInterface } from '../../core/config/config.interface.js';
 import { PrivateRouteMiddleware } from '../../core/middleware/private-route.middleware.js';
 import { RestSchema } from '../../core/config/rest.schema.js';
 import { UploadPhotoRdo } from './rdo/upload-photo.rdo.js';
+import { ParamsDictionary } from 'express-serve-static-core';
+
+type ParamsProductDetails =
+  | {
+      productId: string;
+    }
+  | ParamsDictionary;
 
 @injectable()
 export default class ProductController extends Controller {
@@ -154,7 +161,7 @@ export default class ProductController extends Controller {
     this.ok(res, fillDTO(ProductRdo, updatedProduct));
   }
 
-  public async uploadPhoto(req: Request, res: Response) {
+  public async uploadPhoto(req: Request<ParamsProductDetails>, res: Response) {
     const { productId } = req.params;
     const updateDto = { photo: req.file?.filename };
     await this.productService.updateById(productId, updateDto);

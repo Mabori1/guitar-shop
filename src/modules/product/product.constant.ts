@@ -8,33 +8,33 @@ export const PRODUCT_DEFAULT = {
 
 export const PRODUCT_VALIDATION = {
   TITLE: {
-    MessageValid: 'Title must be 10-100 characters long',
-    MessageRequired: 'Title required',
+    MessageValid: 'Заголовок должен состоять из 10-100 символов',
+    MessageRequired: 'Заголовок обязателен',
     Min: 10,
     Max: 100,
   },
   DESCRIPTION: {
-    MessageValid: 'Description must be 20-1024 characters long',
-    MessageRequired: 'Description required',
+    MessageValid: 'Описание должно состоять из 20-1024 символов',
+    MessageRequired: 'Описание обязательно',
     Min: 20,
     Max: 1024,
   },
   ARTICLE: {
-    MessageValid: 'Article must be 5-40 characters long',
-    MessageRequired: 'Article required',
+    MessageValid: 'Артикул должен состоять из 5-40 символов',
+    MessageRequired: 'Артикул обязателен',
     Min: 5,
     Max: 40,
   },
   PRICE: {
-    MessageValid: 'Price must be in range 100-1000000',
-    MessageRequired: 'Price must be an integer',
+    MessageValid: 'Цена должна быть в пределах 100 - 1 000 000',
+    MessageRequired: 'Цена обязательна',
     Min: 100,
     Max: 1000000,
   },
   PHOTO: {
-    MessageValid: 'Must be a link to *.jpg or *.png file',
+    MessageValid: 'Фото должно быть в формате jpeg или png',
   },
   GUITAR_TYPE: {
-    MessageValid: 'Must be a valid enum type',
+    MessageValid: 'Один вариант из списка: электро, аккустика, укулеле',
   },
 };

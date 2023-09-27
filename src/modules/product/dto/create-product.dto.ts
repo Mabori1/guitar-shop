@@ -1,9 +1,8 @@
 import { GuitarType } from '../../../types/guitar-type.enum.js';
-import { IsEnum, IsInt, IsString, Length, Matches } from 'class-validator';
+import { IsEnum, IsInt, IsString, Length } from 'class-validator';
 import { PRODUCT_VALIDATION } from '../product.constant.js';
 
-const { TITLE, DESCRIPTION, ARTICLE, PRICE, GUITAR_TYPE, PHOTO } =
-  PRODUCT_VALIDATION;
+const { TITLE, DESCRIPTION, ARTICLE, PRICE, GUITAR_TYPE } = PRODUCT_VALIDATION;
 
 export class CreateProductDto {
   @IsString({ message: TITLE.MessageRequired })
@@ -15,10 +14,6 @@ export class CreateProductDto {
     message: DESCRIPTION.MessageValid,
   })
   public description!: string;
-
-  @IsString({ message: DESCRIPTION.MessageRequired })
-  @Matches(/\.(jpg|png)$/, { message: PHOTO.MessageValid })
-  public photo!: string;
 
   @IsEnum(GuitarType, { message: GUITAR_TYPE.MessageValid })
   public guitarType!: GuitarType;

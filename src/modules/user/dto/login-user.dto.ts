@@ -1,5 +1,5 @@
 import { IsEmail, IsString, Length } from 'class-validator';
-import { USER_VALIDATION_DATA } from '../user.constant';
+import { USER_VALIDATION_DATA } from '../user.constant.js';
 
 const { EMAIL, PASSWORD } = USER_VALIDATION_DATA;
 

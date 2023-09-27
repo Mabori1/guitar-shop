@@ -1,7 +1,7 @@
 ## Получить список продуктов
 GET http://localhost:3010/products/?limit=5 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MjIyOTYxLCJleHAiOjE2ODczOTU3NjF9.O26mVrLaIltA5BrsHz_SKZrZRxdXQ_5AQvOSyeNLyTM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hYm9yaUBtYWlsLnJ1IiwiaWQiOiI2NTE0M2FlNDcyZjgyZjc5MjZmNTQ5Y2YiLCJpYXQiOjE2OTU4MjQ2NjIsImV4cCI6MTY5NTk5NzQ2Mn0.MEbRP-FftZRvJGYsKfJdxWgFOXUztXOYAyKHwaihpZc
 
 
 ###
@@ -9,7 +9,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkI
 ## Получить список продуктов с фильтром
 GET http://localhost:3010/products/?stringCount=6 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MjIyOTYxLCJleHAiOjE2ODczOTU3NjF9.O26mVrLaIltA5BrsHz_SKZrZRxdXQ_5AQvOSyeNLyTM
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hYm9yaUBtYWlsLnJ1IiwiaWQiOiI2NTE0M2FlNDcyZjgyZjc5MjZmNTQ5Y2YiLCJpYXQiOjE2OTU4MjQ2NjIsImV4cCI6MTY5NTk5NzQ2Mn0.MEbRP-FftZRvJGYsKfJdxWgFOXUztXOYAyKHwaihpZc
 
 
 ###
@@ -17,12 +17,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkI
 ## Добавить новый продукт
 POST http://localhost:3010/products HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hYm9yaUBtYWlsLnJ1IiwiaWQiOiI2NTE0M2FlNDcyZjgyZjc5MjZmNTQ5Y2YiLCJpYXQiOjE2OTU4MjQ2NjIsImV4cCI6MTY5NTk5NzQ2Mn0.MEbRP-FftZRvJGYsKfJdxWgFOXUztXOYAyKHwaihpZc
 
 {
-  "title": "Новая электро гитара",
-  "description": "Новинка этого года!",
+  "title": "Новая электро гитара 3",
+  "description": "Новинка этого года! Уверены, вы будете очень довольны этим товаром!",
   "guitarType": "электро",
-  "stringCount": 4,
+  "photo": "def.png",
+  "stringCount": 6,
   "article": "jsldfd",
   "price": 23300
 }
@@ -30,27 +32,26 @@ Content-Type: application/json
 ###
 
 ## Получить информацию о продукте
-GET http://localhost:3010/products/648d99a2cb1c31855a38e44f HTTP/1.1
+GET http://localhost:3010/products/65143cef6152b707e131e4ce HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MDA2MTE1LCJleHAiOjE2ODcxNzg5MTV9.QwzM3tXzgBnzmeUX-bK63NwXLi4EQhOfkkGGRFRj-kw
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hYm9yaUBtYWlsLnJ1IiwiaWQiOiI2NTE0M2FlNDcyZjgyZjc5MjZmNTQ5Y2YiLCJpYXQiOjE2OTU4MjQ2NjIsImV4cCI6MTY5NTk5NzQ2Mn0.MEbRP-FftZRvJGYsKfJdxWgFOXUztXOYAyKHwaihpZc
 
 
 ###
 
 ## Удалить продукт
-DELETE http://localhost:3010/products/648d91ca1dec9e8a5b3a0fb3 HTTP/1.1
+DELETE http://localhost:3010/products/65143cef6152b707e131e4ce HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MDA2MTE1LCJleHAiOjE2ODcxNzg5MTV9.QwzM3tXzgBnzmeUX-bK63NwXLi4EQhOfkkGGRFRj-kw
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hYm9yaUBtYWlsLnJ1IiwiaWQiOiI2NTE0M2FlNDcyZjgyZjc5MjZmNTQ5Y2YiLCJpYXQiOjE2OTU4MjQ2NjIsImV4cCI6MTY5NTk5NzQ2Mn0.MEbRP-FftZRvJGYsKfJdxWgFOXUztXOYAyKHwaihpZc
 
 ###
 
 ## Изменить данные продукта
-PATCH http://localhost:3010/products/648d91ca1dec9e8a5b3a0fb3 HTTP/1.1
+PATCH http://localhost:3010/products/65143e0f6152b707e131e4dc HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MDA2MTE1LCJleHAiOjE2ODcxNzg5MTV9.QwzM3tXzgBnzmeUX-bK63NwXLi4EQhOfkkGGRFRj-kw
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hYm9yaUBtYWlsLnJ1IiwiaWQiOiI2NTE0M2FlNDcyZjgyZjc5MjZmNTQ5Y2YiLCJpYXQiOjE2OTU4MjQ2NjIsImV4cCI6MTY5NTk5NzQ2Mn0.MEbRP-FftZRvJGYsKfJdxWgFOXUztXOYAyKHwaihpZc
 
 {
-  "title": "Другая электро гитара",
   "description": "Новинка прошлого года!",
   "photo": "image.png",
   "guitarType": "электро",
@@ -62,14 +63,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkI
 
 ## Отправка фотографии товара
 
-POST http://localhost:3010/products/648d99a2cb1c31855a38e44f/photo HTTP/1.1
+POST http://localhost:3010/products/6514553f56ef2ebb34a6acfc/photo HTTP/1.1
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hYm9yaUBtYWlsLnJ1IiwiaWQiOiI2NTE0M2FlNDcyZjgyZjc5MjZmNTQ5Y2YiLCJpYXQiOjE2OTU4MjQ2NjIsImV4cCI6MTY5NTk5NzQ2Mn0.MEbRP-FftZRvJGYsKfJdxWgFOXUztXOYAyKHwaihpZc
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="photo"; filename="test-product.png"
+Content-Disposition: form-data; name="photo"; filename="test.png"
 Content-Type: image/png
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRpbWFAdGVzdC5ydSIsImlkIjoiNjQ4YTBmM2Y5ZTQwNDJmMjVmNTYxZTc5IiwiaWF0IjoxNjg3MDA2MTE1LCJleHAiOjE2ODcxNzg5MTV9.QwzM3tXzgBnzmeUX-bK63NwXLi4EQhOfkkGGRFRj-kw
 
-
-< /Users/makee/p1.png
+< E:\guitar-shop\src\static\test.png
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
