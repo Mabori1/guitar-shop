@@ -19,3 +19,5 @@ export const USER_VALIDATION_DATA = {
     MessageValid: 'Фото должно быть в формате jpeg или png',
   },
 };
+
+export const JWT_ALGORITHM = 'HS256';
