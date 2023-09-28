@@ -1,4 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { PrivateRoute } from '../components/private-route/private-route';
+import { AppRoute, AuthorizationStatus } from '../constants';
 import { ErrorPage } from '../pages/error-page/error-page';
 import { Layout } from '../pages/layout/layout';
 import { Login } from '../pages/login/login';
@@ -12,16 +14,25 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
+        path: AppRoute.Login,
         element: <Login />,
       },
       {
-        path: '/products',
-        element: <ProductList />,
+        path: AppRoute.Products,
+        element: (
+          <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <ProductList />
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/register',
-        element: <Register />,
+        path: AppRoute.Register,
+
+        element: (
+          <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <Register />
+          </PrivateRoute>
+        ),
       },
     ],
   },

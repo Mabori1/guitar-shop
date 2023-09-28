@@ -1,14 +1,14 @@
+import { Outlet, useLocation } from 'react-router-dom';
 import { Footer } from '../../components/footer/footer';
 import { Header } from '../../components/header/header';
-import { Outlet } from 'react-router-dom';
 
-export const Layout: React.FC = () => {
+export const Layout = () => {
   return (
-    <div>
+    <div className="wrapper">
       <Header />
-      <div className="layout-container">
+      <main className="page-content">
         <Outlet />
-      </div>
+      </main>
       <Footer />
     </div>
   );
