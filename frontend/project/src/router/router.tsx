@@ -5,7 +5,7 @@ import { Login } from '../pages/login/login';
 import { ProductList } from '../pages/product-list/product-list';
 import { Register } from '../pages/register/register';
 
-export const Router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,

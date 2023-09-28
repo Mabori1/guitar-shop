@@ -1,17 +1,8 @@
-import { Footer } from '../footer/footer';
-import { Header } from '../header/header';
+import { RouterProvider } from 'react-router-dom';
+import { router } from '../../router/router';
 
-type AppScreenProps = {
-  errorsCount: number;
-};
-
-function App({ errorsCount }: AppScreenProps): JSX.Element {
-  return (
-    <>
-      <Header />;
-      <Footer />;
-    </>
-  );
+function App(): JSX.Element {
+  return <RouterProvider router={router} />;
 }
 
 export default App;
