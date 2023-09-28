@@ -1,6 +1,5 @@
-import WelcomeScreen from "../../pages/welcome-screen/welcome-screen";
-import { Footer } from "../footer/footer";
-import { Header } from "../header/header";
+import { Footer } from '../footer/footer';
+import { Header } from '../header/header';
 
 type AppScreenProps = {
   errorsCount: number;

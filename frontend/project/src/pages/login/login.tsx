@@ -1,5 +1,3 @@
-const login: React.FC = () => {
+export const Login: React.FC = () => {
   return <div>login</div>;
 };
-
-export default login;
