@@ -33,7 +33,7 @@ function Login(): JSX.Element {
         <h1 className="login__title">Войти</h1>
         <p className="login__text">
           Hовый пользователь?{' '}
-          <a className="login__link" href="registration.html">
+          <a className="login__link" href={AppRoute.Register}>
             Зарегистрируйтесь
           </a>{' '}
           прямо сейчас

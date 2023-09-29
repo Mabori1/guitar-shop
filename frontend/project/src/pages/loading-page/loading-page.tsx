@@ -1,3 +1,3 @@
 export default function LoadingPage(): JSX.Element {
-  return <span className="loader"></span>;
+  return <h2>Loading...</h2>;
 }

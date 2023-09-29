@@ -5,8 +5,6 @@ import {
   changeFilter,
   changePage,
   loadProducts,
-  requireAuthorization,
-  setError,
   setProductLoadingStatus,
 } from './actions';
 
@@ -22,7 +20,6 @@ type InitialState = {
   };
   authStatus: AuthStatus;
   user: User | undefined;
-  error: string | null;
   isDataLoading: boolean;
 };
 
@@ -46,7 +43,6 @@ const initialState: InitialState = {
   },
   authStatus: AuthStatus.Unknown,
   user: undefined,
-  error: null,
   isDataLoading: false,
 };
 
@@ -61,13 +57,7 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(loadProducts, (state, action) => {
       state.products = action.payload;
     })
-    .addCase(requireAuthorization, (state, action) => {
-      state.authStatus = action.payload;
-    })
     .addCase(setProductLoadingStatus, (state, action) => {
       state.isDataLoading = action.payload;
-    })
-    .addCase(setError, (state, action) => {
-      state.error = action.payload;
     });
 });

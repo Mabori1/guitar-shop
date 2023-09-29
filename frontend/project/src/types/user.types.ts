@@ -1,3 +1,5 @@
+import { AuthStatus } from '../const';
+
 export type UserRegisterData = {
   name: string;
   email: string;
@@ -18,4 +20,16 @@ export type UserData = {
 export type AuthData = {
   password: string;
   login: string;
+};
+
+export type UserType = {
+  id?: string;
+  name: string;
+  email: string;
+  token: string;
+};
+
+export type UserSlice = {
+  userData: UserType | null;
+  authStatus: AuthStatus;
 };

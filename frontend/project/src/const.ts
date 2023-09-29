@@ -16,9 +16,15 @@ export enum AppRoute {
 export enum APIRoute {
   Products = '/products',
   Register = '/register',
-  Login = '/login',
-  Logout = '/logout',
+  Login = '/users/login',
+  Logout = '/users/logout',
 }
 
-export const TIMEOUT_SHOW_ERROR = 2000;
 export const LIMIT_PAGE = 7;
+
+export enum NameSpace {
+  Products = 'products',
+  ActiveProduct = 'active',
+  User = 'user',
+  Service = 'service',
+}

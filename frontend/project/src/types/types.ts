@@ -39,8 +39,10 @@ type NewType = {
 
 export type User = NewType;
 
-export type UserProcess = {
-  authStatus: AuthStatus;
+export type ProductsSlice = {
+  products: Products;
+  isProductsDataLoading: boolean;
+  hasError: boolean;
 };
 
 export type State = ReturnType<typeof store.getState>;
