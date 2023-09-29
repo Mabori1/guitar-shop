@@ -34,6 +34,9 @@ export default function App(): JSX.Element {
 
   const isAccess = authStatus === AuthStatus.Auth;
 
+  //eslint-disable-next-line
+  console.log('isAccess', isAccess);
+
   return (
     <BrowserRouter>
       <Routes>
