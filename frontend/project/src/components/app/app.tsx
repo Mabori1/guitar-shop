@@ -29,11 +29,10 @@ export default function App(): JSX.Element {
     return <LoadingPage />;
   }
 
-  const ProtectedRoute = ({ access }: Access) => {
-    return access ? <Outlet /> : <Navigate to={AppRoute.Login} replace />;
-  };
+  const ProtectedRoute = ({ access }: Access) =>
+    access ? <Outlet /> : <Navigate to={AppRoute.Login} replace />;
 
-  let isAccess = authStatus === AuthStatus.Auth;
+  const isAccess = authStatus === AuthStatus.Auth;
 
   return (
     <BrowserRouter>
