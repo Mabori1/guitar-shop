@@ -1,7 +1,7 @@
 ## Получить список продуктов
 GET http://localhost:3010/products/?limit=5 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hYm9yaUBtYWlsLnJ1IiwiaWQiOiI2NTE0M2FlNDcyZjgyZjc5MjZmNTQ5Y2YiLCJpYXQiOjE2OTU4MjQ2NjIsImV4cCI6MTY5NTk5NzQ2Mn0.MEbRP-FftZRvJGYsKfJdxWgFOXUztXOYAyKHwaihpZc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1ha2VldmhvbWVAbWEucnUiLCJpZCI6IjY1MTg4MDMwZjdjNWFhMjJkMWFjZDg2YiIsIm5hbWUiOiLQkNC70LXQutGB0LXQuSIsImlhdCI6MTY5NjEwNDczMiwiZXhwIjoxNjk2Mjc3NTMyfQ.JBWecweNP2Y0lhrdcJfKkXzENHavCP2O4Hoh9ZQFUaY
 
 
 ###

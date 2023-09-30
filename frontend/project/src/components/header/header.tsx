@@ -1,8 +1,13 @@
 import { Logo } from '../logo/logo';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
+import { useAppSelector } from '../../hooks';
+import { getIsAuthorized, getUserData } from '../../store/user/selector';
 
 export function Header() {
+  const isAuthorized = useAppSelector(getIsAuthorized);
+  const userData = useAppSelector(getUserData);
+
   return (
     <header className="header" id="header">
       <div className="container">
@@ -23,7 +28,9 @@ export function Header() {
             </ul>
           </nav>
           <div className="header__container">
-            <span className="header__user-name">Имя</span>
+            <span className="header__user-name">
+              {isAuthorized ? userData?.name : ''}
+            </span>
             <a
               className="header__link"
               href="login.html"
@@ -33,7 +40,7 @@ export function Header() {
                 className="header__link-icon"
                 width="12"
                 height="14"
-                aria-hidden="true"
+                aria-hidden="false"
               >
                 <use xlinkHref="#icon-account"></use>
               </svg>

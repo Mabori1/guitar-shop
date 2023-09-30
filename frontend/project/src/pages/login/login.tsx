@@ -1,28 +1,58 @@
-import { FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { AppRoute } from '../../const';
 import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/user/api-actions';
-import { AuthData } from '../../types/user.types';
+
+type Field = {
+  value: string;
+  error: boolean;
+  regExp: RegExp;
+  errorMessage: string;
+  touched: boolean;
+};
 
 export function Login(): JSX.Element {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
-  const onSubmit = (authData: AuthData) => {
-    dispatch(loginAction(authData));
+  const [formData, setFormData] = useState<Record<string, Field>>({
+    email: {
+      value: '',
+      error: false,
+      regExp: /^([a-z0-9_.-]+)@([\da-z.-]+).([a-z.]{2,6})$/,
+      errorMessage: 'Incorrect Email address',
+      touched: false,
+    },
+    password: {
+      value: '',
+      error: false,
+      regExp: /([0-9].*[a-z])|([a-z].*[0-9])/,
+      errorMessage: 'At least one letter and one number',
+      touched: false,
+    },
+  });
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    const isValid = formData[name].regExp.test(value);
+    setFormData({
+      ...formData,
+      [name]: { ...formData[name], error: isValid, touched: true, value },
+    });
   };
 
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
+  const handleFormSubmit = (event: FormEvent) => {
+    event.preventDefault();
 
-    onSubmit({
-      email,
-      password,
-    });
+    //eslint-disable-next-line
+    console.log(formData.email.value);
+
+    dispatch(
+      loginAction({
+        email: formData.email.value,
+        password: formData.password.value,
+      })
+    );
   };
 
   return (
@@ -36,7 +66,7 @@ export function Login(): JSX.Element {
           </a>{' '}
           прямо сейчас
         </p>
-        <form method="post" action="" onSubmit={handleSubmit}>
+        <form method="post" action="" onSubmit={handleFormSubmit}>
           <div className="input-login">
             <label htmlFor="email">Введите e-mail</label>
             <input
@@ -44,7 +74,7 @@ export function Login(): JSX.Element {
               id="email"
               name="email"
               required
-              onChange={(evt) => setEmail(evt.target.value)}
+              onChange={handleInputChange}
             />
             <p className="input-login__error">Заполните поле</p>
           </div>
@@ -57,7 +87,7 @@ export function Login(): JSX.Element {
                 id="passwordLogin"
                 name="password"
                 required
-                onChange={(evt) => setPassword(evt.target.value)}
+                onChange={handleInputChange}
               />
               <button className="input-login__button-eye" type="button">
                 <svg width="14" height="8" aria-hidden="true">
@@ -69,8 +99,8 @@ export function Login(): JSX.Element {
           </div>
           <button
             className="button login__button button--medium"
-            type="button"
-            onClick={() => navigate(AppRoute.Products)}
+            type="submit"
+            disabled={!formData.email.error || !formData.password.error}
           >
             Войти
           </button>
