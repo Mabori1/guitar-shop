@@ -10,7 +10,6 @@ import { RestSchema } from '../../core/config/rest.schema.js';
 import HttpError from '../../core/errors/http-error.js';
 import { StatusCodes } from 'http-status-codes';
 import { createJWT, fillDTO } from '../../core/helpers/index.js';
-import UserRdo from './rdo/user.rdo.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
 import { LoginUserDto } from './dto/login-user.dto.js';
 import { UnknownRecord } from '../../types/unknown-Record.type.js';
@@ -69,7 +68,7 @@ export default class UserController extends Controller {
       body,
       this.configService.get('SALT')
     );
-    this.created(res, fillDTO(UserRdo, result));
+    this.created(res, fillDTO(LoggedUserRdo, result));
   }
 
   public async login(
