@@ -13,6 +13,7 @@ export type UserLoginData = {
 
 export type UserData = {
   id: number;
+  name: string;
   email: string;
   token: string;
 };

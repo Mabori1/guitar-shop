@@ -2,6 +2,7 @@ export enum AuthStatus {
   Auth = 'authorized',
   NoAuth = 'unauthorized',
   Unknown = 'unknown',
+  Loading = 'LOADING',
 }
 
 export enum AppRoute {
@@ -27,4 +28,11 @@ export enum NameSpace {
   ActiveProduct = 'active',
   User = 'user',
   Service = 'service',
+}
+
+export enum FetchStatus {
+  Idle = 'Idle',
+  Loading = 'Loading',
+  Success = 'Success',
+  Failed = 'Failed',
 }
