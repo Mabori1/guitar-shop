@@ -2,6 +2,7 @@ import { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { APIRoute } from '../../const';
 import { Products, AppDispatch, State } from '../../types/types';
+import { toast } from 'react-toastify';
 
 export const fetchProductsAction = createAsyncThunk<
   Products,
@@ -16,6 +17,7 @@ export const fetchProductsAction = createAsyncThunk<
     const { data } = await api.get<Products>(APIRoute.Products);
     return data;
   } catch (err) {
+    toast.error('Failed to load products');
     throw err;
   }
 });

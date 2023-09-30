@@ -95,6 +95,7 @@ export default class UserController extends Controller {
       {
         email: user.email,
         id: user.id,
+        name: user.name,
       }
     );
 

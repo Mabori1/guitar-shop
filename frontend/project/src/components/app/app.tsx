@@ -5,30 +5,22 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import AddProduct from '../../pages/add-product/add-product';
 import EditProduct from '../../pages/edit-product/edit-product';
 import { ErrorPage } from '../../pages/error-page/error-page';
-import LoadingPage from '../../pages/loading-page/loading-page';
-import Login from '../../pages/login/login';
+import { Login } from '../../pages/login/login';
 import Product from '../../pages/product/product';
 import Products from '../../pages/products/products';
 import Registration from '../../pages/registration/registration';
-import { getProductsStatus } from '../../store/product/selector';
 import { checkAuthAction } from '../../store/user/api-actions';
-import { getIsAuthorized, getIsUserLoading } from '../../store/user/selector';
+import { getIsAuthorized } from '../../store/user/selector';
 import { Layout } from '../layout/layout';
 import { ProtectedRoute } from '../protected-route/protected-route';
 
 export default function App(): JSX.Element {
   const isAccess = useAppSelector(getIsAuthorized);
-  const isUserLoading = useAppSelector(getIsUserLoading);
-  const productStatus = useAppSelector(getProductsStatus);
 
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(checkAuthAction());
   }, [dispatch]);
-
-  if (isUserLoading || productStatus.isLoading) {
-    return <LoadingPage />;
-  }
 
   return (
     <BrowserRouter>

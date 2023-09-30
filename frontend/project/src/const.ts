@@ -16,9 +16,9 @@ export enum AppRoute {
 
 export enum APIRoute {
   Products = '/products',
-  Register = '/register',
-  Login = '/users/login',
-  Logout = '/users/logout',
+  Register = 'users/register',
+  Login = 'users/login',
+  Logout = 'users/logout',
 }
 
 export const LIMIT_PAGE = 7;

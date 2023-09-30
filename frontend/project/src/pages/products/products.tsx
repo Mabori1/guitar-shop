@@ -1,4 +1,14 @@
+import { useAppSelector } from '../../hooks';
+import { getProductsStatus } from '../../store/product/selector';
+import LoadingPage from '../loading-page/loading-page';
+
 export default function Products() {
+  const productStatus = useAppSelector(getProductsStatus);
+
+  if (productStatus.isLoading) {
+    return <LoadingPage />;
+  }
+
   return (
     <section className="product-list">
       <div className="container">

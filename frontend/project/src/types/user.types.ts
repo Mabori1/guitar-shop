@@ -20,7 +20,7 @@ export type UserData = {
 
 export type AuthData = {
   password: string;
-  login: string;
+  email: string;
 };
 
 export type UserType = {

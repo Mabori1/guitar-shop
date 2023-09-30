@@ -1,13 +1,13 @@
-import { useRef, FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { useAppDispatch } from '../../hooks';
-import { loginAction } from '../../store/api-actions';
+import { loginAction } from '../../store/user/api-actions';
 import { AuthData } from '../../types/user.types';
 
-function Login(): JSX.Element {
-  const loginRef = useRef<HTMLInputElement | null>(null);
-  const passwordRef = useRef<HTMLInputElement | null>(null);
+export function Login(): JSX.Element {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -19,12 +19,10 @@ function Login(): JSX.Element {
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    if (loginRef.current !== null && passwordRef.current !== null) {
-      onSubmit({
-        login: loginRef.current.value,
-        password: passwordRef.current.value,
-      });
-    }
+    onSubmit({
+      email,
+      password,
+    });
   };
 
   return (
@@ -38,16 +36,15 @@ function Login(): JSX.Element {
           </a>{' '}
           прямо сейчас
         </p>
-        <form method="post" action="/" onSubmit={handleSubmit}>
+        <form method="post" action="" onSubmit={handleSubmit}>
           <div className="input-login">
             <label htmlFor="email">Введите e-mail</label>
             <input
               type="email"
               id="email"
               name="email"
-              autoComplete="off"
               required
-              ref={loginRef}
+              onChange={(evt) => setEmail(evt.target.value)}
             />
             <p className="input-login__error">Заполните поле</p>
           </div>
@@ -59,9 +56,8 @@ function Login(): JSX.Element {
                 placeholder="• • • • • • • • • • • •"
                 id="passwordLogin"
                 name="password"
-                autoComplete="off"
                 required
-                ref={passwordRef}
+                onChange={(evt) => setPassword(evt.target.value)}
               />
               <button className="input-login__button-eye" type="button">
                 <svg width="14" height="8" aria-hidden="true">
@@ -83,5 +79,3 @@ function Login(): JSX.Element {
     </div>
   );
 }
-
-export default Login;

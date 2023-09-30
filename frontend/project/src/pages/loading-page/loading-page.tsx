@@ -1,4 +1,3 @@
-}
 import styles from './loading-page.module.css';
 
 export default function LoadingPage(): JSX.Element {
@@ -9,4 +8,3 @@ export default function LoadingPage(): JSX.Element {
     </div>
   );
 }
-

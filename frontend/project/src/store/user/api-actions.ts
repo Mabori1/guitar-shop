@@ -5,6 +5,7 @@ import { APIRoute } from '../../const';
 import { toast } from 'react-toastify';
 import { AppDispatch, State } from '../../types/types';
 import { UserData, AuthData } from '../../types/user.types';
+import { fetchProductsAction } from '../product/api-actions';
 
 type ThunkOptions = {
   dispatch: AppDispatch;
@@ -19,6 +20,7 @@ export const checkAuthAction = createAsyncThunk<
 >('user/checkAuth', async (_arg, { dispatch, extra: api }) => {
   try {
     const { data } = await api.get<UserData>(APIRoute.Login);
+    dispatch(fetchProductsAction());
     return data;
   } catch (e) {
     toast.error('Failed to check authorization');
@@ -28,13 +30,14 @@ export const checkAuthAction = createAsyncThunk<
 
 export const loginAction = createAsyncThunk<UserData, AuthData, ThunkOptions>(
   'user/login',
-  async ({ login: email, password }, { dispatch, extra: api }) => {
+  async ({ email, password }, { dispatch, extra: api }) => {
     try {
       const { data } = await api.post<UserData>(APIRoute.Login, {
         email,
         password,
       });
       saveToken(data.token);
+      dispatch(fetchProductsAction());
       return data;
     } catch (e) {
       toast.error('Failed to authorization');
